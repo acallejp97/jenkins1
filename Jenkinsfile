@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    environment{
+        fichero = "/etc/passwd"
+    }
     stages {
         stage('Mostrar fecha') {
             steps {
@@ -9,7 +11,7 @@ pipeline {
         }
         stage('Mostrar usuarios') {
             steps {
-                sh 'wc -l /etc/passwd'
+                sh 'wc -l ${fichero}'
             }
         }
     }
